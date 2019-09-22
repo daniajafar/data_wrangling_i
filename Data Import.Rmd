@@ -7,6 +7,8 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 
 library(tidyverse)
+library(readxl)
+
 ```
 
 ## Load in a the litters data
@@ -15,9 +17,21 @@ library(tidyverse)
 ## reads in a dataset
 litters_data = read_csv(file = "./data/FAS_litters.csv")
 litters_data = janitor::clean_names(litters_data)
-litters_data
 
 ```
 
+#Load in the pups data
+
+##Readi in an excel file
+
+```{r}
+mlb11_data = read_excel(path = "data/mlb11.xlsx")
+```
+
+```{r}
+pups_data = read_csv(file = "./data/FAS_pups.csv")
+```
+
+view(litters_data)
 
 
