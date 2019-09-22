@@ -7,8 +7,17 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 
 library(tidyverse)
-library(readxl)
 
+```
+
+## Import datasets
+
+```{r}
+litters_data = read_csv("./data/FAS_litters.csv")
+litters_data = janitor::clean_names(litters_data)
+
+pups_data = read_csv("./data/FAS_pups.csv")
+pups_data = janitor::clean_names(pups_data)
 ```
 
 ## Load in a the litters data
@@ -22,16 +31,24 @@ litters_data = janitor::clean_names(litters_data)
 
 #Load in the pups data
 
-##Readi in an excel file
+
+## Read in SAS
 
 ```{r}
-mlb11_data = read_excel(path = "data/mlb11.xlsx")
+pulse_data = haven::read_sas("./data/public_pulse_data.sas7bdat")
+
 ```
 
 ```{r}
 pups_data = read_csv(file = "./data/FAS_pups.csv")
 ```
 
-view(litters_data)
+## Selecting
 
+```{r}
+select(litters_data, group, litter_number)
+
+rename(litters_data, GROUP = group)
+
+```
 
