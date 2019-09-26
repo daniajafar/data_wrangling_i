@@ -52,3 +52,44 @@ rename(litters_data, GROUP = group)
 
 ```
 
+## Filtering!
+
+```{r}
+filter(litters_data, group == "Mod8")
+
+filter(litters_data, gd_of_birth == 20)
+
+filter(litters_data, gd_of_birth >= 20)
+
+filter(litters_data, pups_born_alive < 6, group =="Con7")
+```
+
+```{r}
+mutate(litters_data,
+  wt_gain = gd18_weight - gd0_weight,
+  group = str_to_lower(group)
+)
+```
+
+## Arrange
+
+```{r}
+arrange(litters_data, pups_born_alive)
+
+arrange(litters_data, desc(pups_born_alive))
+
+arrange(litters_data, pups_born_alive, gd0_weight)
+
+
+```
+
+```{r}
+select(pups_data, litter_number, sex, pd_ears)
+```
+```{r}
+mutate(pups_data, sum_pd = sum(pd_ears, pd_eyes, pd_pivot, pd_walk), sum_pd2 = (pd_ears + pd_eyes + pd_pivot + pd_walk))
+
+head(arrange(litters_data, group, pups_born_alive), 10)
+
+%>% 
+```
